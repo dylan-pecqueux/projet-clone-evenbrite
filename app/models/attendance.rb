@@ -5,6 +5,6 @@ class Attendance < ApplicationRecord
     after_create :new_participant_send
 
     def new_participant_send
-      UserMailer.new_participant_mail(self).deliver_now
+      AttendanceMailer.new_participant_mail(self).deliver_now
     end
 end
