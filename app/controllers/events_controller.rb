@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.admin = current_user
     if @event.save
-      redirect_to "/"
+      redirect_to @event
       flash[:notice] = 'Ton événement a bien était enregistré'
     else
       render 'new'
