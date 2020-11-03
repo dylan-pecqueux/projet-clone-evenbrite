@@ -13,29 +13,38 @@
 
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="/">EventBrite</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <a class="navbar-brand text-primary" href="/">EventBrite</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse " id="navbarColor03">
         <ul class="navbar-nav navbar-center">
           <li class="nav-item">
             <a class="nav-link" href="/">Accueil</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link ml-auto p-2" <%= link_to "Créer un event", new_event_path %></a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in?%>
-          <li class="ml-auto p-2">Connecté avec l'email : <%=current_user.email%>,</li>
-            <li class="nav-item">
+          <li class="ml-auto px-2 text-secondary"><small> Connecté avec l'email : <%=current_user.email%> </small></li>
+            <div class="dropdown ml-auto px-2">
+              <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profil/Sign out
+              </button>
+            
+            <div class="dropdown-menu">
               <a class="nav-link ml-auto p-2" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link ml-auto p-2" <%= link_to "Edit email / password", edit_user_registration_path %></a>
-            </li>
+              <div class="dropdown-divider"></div>
+              <a class="nav-link ml-auto p-2" <%= link_to "Profil", user_path(current_user) %></a>
+            </div>
+            </div>
+            
           <% else %>
             <div class="dropdown ml-auto p-2">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sign in/Sign up
               </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

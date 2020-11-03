@@ -1,0 +1,37 @@
+<html>
+  <body>
+    <div class="jumbotron jumbotron-fluid border-bottom row align-items-end" id="jumbotron-showuser" >
+      <div class="container-fluid blockquote text-center d-flex justify-content-center">
+        <div class="container rounded" id="userjumb">
+        <div class="container my-3">
+          <h2> Votre profil </h2>
+        </div>
+        <div class="container d-flex justify-content-around my-4">
+          <p><span class="text-primary">Prénom : </span><%= @user.first_name %></p>
+          <p><span class="text-primary">Nom : </span><%= @user.last_name %></p>
+        </div>
+        <div class="container my-4">
+        <p><span class="text-primary">Email : </span><%= @user.email %></p>
+        </div>
+        <div class="container my-4">
+          <p><span class="text-primary">Description : </span><%= @user.description %></p>
+        </div>
+        <a class="btn btn-primary mb-3" <%= link_to "Edit email / password", edit_user_registration_path %></a>
+        </div>
+      </div>
+</div>
+<div class="container">
+  <h1 class="text-center m-5">Les événements que vous avez créé :</h1>
+  <div class="row text-center d-flex justify-content-around ">
+    <% @user.admin_events.each_with_index do |event, index| %>
+      <div class="card m-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2018/05/10133237/reach-busy-event-attendees.jpg" alt="Card image cap">
+  <div class="card-body">
+    <p class="text-primary"> <%= event.start_date %></p>
+    <h5 class="card-text"><%= event.title %></h5>
+  </div>
+</div>
+    <% end %>
+  </div>
+</body>
+</html>

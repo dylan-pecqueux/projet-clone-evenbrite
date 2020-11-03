@@ -1,25 +1,30 @@
-// Place all the styles related to the events controller here.
+// Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#jumbotron-hero {
+#jumbotron-showuser {
   background-image: url('Event.png');
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top;
+  background-attachment: absolute;
+  background-position: center;
   background-size: cover;
   height: 500px;
 }
 
-#jumbotron-showevent {
-  background-image: url('event-photo.jpg');
+#userjumb {
+  background: rgba(255, 255, 255, 0.8);
+  max-width: 30rem;
+}
+
+#transparentedit {
+  background: rgba(255, 255, 255, 0.8);
+  max-width: 50rem;
+}
+
+#jumbotron-new {
+  background-image: url('Event.png');
   background-repeat: no-repeat;
   background-attachment: absolute;
   background-position: center;
   background-size: cover;
   min-height: 100vh;
-}
-
-#transparent {
-  background: rgba(255, 255, 255, 0.8);
-  max-width: 50rem;
 }
