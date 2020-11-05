@@ -1,33 +1,48 @@
 <html>
   <body>
     <div class="jumbotron jumbotron-fluid" id="jumbotron-showevent" >
-      <div class="container-fluid blockquote text-center d-flex justify-content-center">
+      <div class="container blockquote text-center d-flex justify-content-around">
+        
         <div class="container rounded" id="transparent">
-        <div class="container my-4">
-          <h2> <%= @event.title %> </h2>
+          <div class="container my-4">
+            <h2> <%= @event.title %> </h2>
+          </div>
+          
+          
+          <div class="container d-flex justify-content-around my-4">
+            <p><span class="text-primary">Date de début : </span><br/><%= @event.start_date %></p>
+            <p><span class="text-primary">Date de fin : </span><br/><%= @event.start_date + (@event.duration * 60) %></p>
+            <p><span class="text-primary">Durée de l'événement : </span><br/><%= @event.duration %> min</p>
+          </div>
+          <div class="container d-flex justify-content-around my-4">
+          <p><span class="text-primary">Ville : </span><%= @event.location %></p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Nombre d'inscrits : </span><%= @event.participants.count %></p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Description de l'événement : </span><br/><%= @event.description %></p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Prix : </span><%= @event.price %>$</p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Email du créateur de l'événement : </span><%= @event.admin.email %></p>
+          </div>
+          <% if @event.admin != current_user && !@event.participants.include?(current_user)%>
+          <div class="container my-4">
+            <a class="btn btn-outline-primary" <%= link_to "Participer à l'événement", new_event_attendance_path(@event)%></a>
+          </div>
+          <% end %>
         </div>
-        <div class="container d-flex justify-content-around my-4">
-          <p><span class="text-primary">Date de début : </span><br/><%= @event.start_date %></p>
-          <p><span class="text-primary">Date de fin : </span><br/><%= @event.start_date + (@event.duration * 60) %></p>
-          <p><span class="text-primary">Durée de l'événement : </span><br/><%= @event.duration %> min</p>
-        </div>
-        <div class="container d-flex justify-content-around my-4">
-        <p><span class="text-primary">Ville : </span><%= @event.location %></p>
-        </div>
-        <div class="container my-4">
-          <p><span class="text-primary">Nombre d'inscrits : </span><%= @event.participants.count %></p>
-        </div>
-        <div class="container my-4">
-          <p><span class="text-primary">Description de l'événement : </span><br/><%= @event.description %></p>
-        </div>
-        <div class="container my-4">
-          <p><span class="text-primary">Prix : </span><%= @event.price %>$</p>
-        </div>
-        <div class="container my-4">
-          <p><span class="text-primary">Email du créateur de l'événement : </span><%= @event.admin.email %></p>
-        </div>
+        <div class="container d-flex align-items-center">
+          <%if @event.picture.attached? %>
+            <%= image_tag @event.picture, alt: 'picture', style: "max-height: 400px" %>
+          <%else%>
+           <p> nothing </p>
+          <%end%>
         </div>
       </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>

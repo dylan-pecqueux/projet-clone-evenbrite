@@ -2,6 +2,9 @@ class Event < ApplicationRecord
     belongs_to :admin, class_name: 'User'
     has_many :attendances
     has_many :participants, class_name: 'User', through: :attendances
+
+    has_one_attached :picture
+
     validates :title, presence: true, length: { in: 5..140 }
     validates :description, presence: true, length: { in: 20..1000 }
     #validates :price, presence: true, value: { in: 1..1000 }

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #jumbotron-hero {
-  background-image: url('Event.png');
+  background-image: url(asset_path('Event.png'));
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: top;
@@ -11,7 +11,7 @@
 }
 
 #jumbotron-showevent {
-  background-image: url('event-photo.jpg');
+  background-image: url(asset_path('event-photo.jpg'));
   background-repeat: no-repeat;
   background-attachment: absolute;
   background-position: center;

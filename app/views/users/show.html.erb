@@ -6,6 +6,22 @@
         <div class="container my-3">
           <h2> Votre profil </h2>
         </div>
+           <div class="container d-flex justify-content-around my-4">
+          <%if @user.avatar.attached?%>
+            <%= image_tag @user.avatar, alt: 'avatar', style: "max-width: 200px", class: "rounded-circle border border-primary" %>
+          <%else%>
+            <p><%= image_tag 'imgpsh.png', alt: 'avatar_default', style: "max-width: 200px", class: "rounded-circle border border-primary" %></p>
+          <%end%>
+        </div>
+        <div class="container my-4">
+          <p>Changer d'avatar ?</p>
+          <%= form_tag user_avatars_path(@user), multipart: true do %>
+            <%= file_field_tag :avatar, class: "my-1 btn-sm" %>
+            <%= submit_tag "mettre à jour l'avatar", class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
+     
+        
         <div class="container d-flex justify-content-around my-4">
           <p><span class="text-primary">Prénom : </span><%= @user.first_name %></p>
           <p><span class="text-primary">Nom : </span><%= @user.last_name %></p>
@@ -33,5 +49,21 @@
 </div>
     <% end %>
   </div>
+
+  <div class="container d-flex justify-content-around my-4">
+          <h3>Changer d'avatar ?</h3>
+          <%= form_tag user_avatars_path(@user), multipart: true do %>
+            <%= file_field_tag :avatar %>
+            <%= submit_tag "mettre à jour" %>
+          <% end %>
+        </div>
+        <div class="container d-flex justify-content-around my-4">
+          <h3>Avatar actuel</h3>
+          <%if @user.avatar.attached?%>
+            <%= image_tag @user.avatar, alt: 'avatar', style: "max-width: 100px" %>
+          <%else%>
+            <p><%= image_tag 'imgpsh.png', alt: 'avatar_default', style: "max-width: 100px" %></p>
+          <%end%>
+        </div>
 </body>
 </html>

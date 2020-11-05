@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #jumbotron-showuser {
-  background-image: url('Event.png');
+  background-image: url(asset_path('Event.png'));
   background-repeat: no-repeat;
   background-attachment: absolute;
   background-position: center;
   background-size: cover;
-  height: 500px;
+  height: 800px;
 }
 
 #userjumb {
@@ -21,7 +21,7 @@
 }
 
 #jumbotron-new {
-  background-image: url('Event.png');
+  background-image: url(asset_path('Event.png'));
   background-repeat: no-repeat;
   background-attachment: absolute;
   background-position: center;
