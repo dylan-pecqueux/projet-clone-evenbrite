@@ -8,6 +8,7 @@
 
 User.destroy_all
 Event.destroy_all
+User.reset_pk_sequence
 
 a = 0
 10.times do
