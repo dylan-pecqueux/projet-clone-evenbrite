@@ -1,0 +1,52 @@
+<div class="container blockquote text-center d-flex justify-content-around">
+        
+        <div class="container rounded" id="transparent">
+          <div class="container my-4">
+            <h2> <%= @not_validate.title %> </h2>
+          </div>
+          
+          
+          <div class="container d-flex justify-content-around my-4">
+            <p><span class="text-primary">Date de début : </span><br/><%= @not_validate.start_date %></p>
+            <p><span class="text-primary">Date de fin : </span><br/><%= @not_validate.start_date + (@not_validate.duration * 60) %></p>
+            <p><span class="text-primary">Durée de l'événement : </span><br/><%= @not_validate.duration %> min</p>
+          </div>
+          <div class="container d-flex justify-content-around my-4">
+          <p><span class="text-primary">Ville : </span><%= @not_validate.location %></p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Nombre d'inscrits : </span><%= @not_validate.participants.count %></p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Description de l'événement : </span><br/><%= @not_validate.description %></p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Prix : </span><%= @not_validate.price %>$</p>
+          </div>
+          <div class="container my-4">
+            <p><span class="text-primary">Email du créateur de l'événement : </span><%= @not_validate.admin.email %></p>
+          </div>
+          
+          <div class="container my-4">
+            
+            <%= form_with(url: edit_admin_event_path(@not_validate), method: "get") do %>
+              <%= hidden_field_tag(:validated, true) %>
+              <%= submit_tag("Autoriser") %>
+            <% end %>
+
+            <%= form_with(url: edit_admin_event_path(@not_validate), method: "get") do %>
+              <%= hidden_field_tag(:validated, false) %>
+              <%= submit_tag("Refuser") %>
+            <% end %>
+            
+          </div>
+       
+        </div>
+        <div class="container d-flex align-items-center">
+          <%if @not_validate.picture.attached? %>
+            <%= image_tag @not_validate.picture, alt: 'picture', style: "max-height: 400px" %>
+          <%else%>
+           <p> nothing </p>
+          <%end%>
+        </div>
+      </div>

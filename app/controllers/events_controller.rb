@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @event = Event.all
+    @event = Event.where(validated: true)
   end
 
   def show
